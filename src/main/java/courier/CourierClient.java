@@ -1,5 +1,6 @@
 package courier;
 
+import client.Client;
 import io.qameta.allure.Step;
 
 import io.restassured.filter.Filter;

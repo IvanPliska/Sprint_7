@@ -1,6 +1,6 @@
 package orders;
 
-import courier.Client;
+import client.Client;
 import io.qameta.allure.Step;
 import io.restassured.filter.Filter;
 import io.restassured.filter.log.RequestLoggingFilter;
