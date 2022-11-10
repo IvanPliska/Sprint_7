@@ -1,8 +1,7 @@
-package Orders;
+package orders;
 
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Test;
 

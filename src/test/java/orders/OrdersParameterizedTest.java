@@ -1,4 +1,4 @@
-package Orders;
+package orders;
 
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class OrdersParameterizedTest {
     private OrdersClient ordersClient;
 
-    private Orders orders;
+    private Order order;
     private int statusCode;
     private int track;
 
@@ -23,8 +23,8 @@ public class OrdersParameterizedTest {
         ordersClient = new OrdersClient();
     }
 
-    public OrdersParameterizedTest(Orders orders, int statusCode) {
-        this.orders = orders;
+    public OrdersParameterizedTest(Order order, int statusCode) {
+        this.order = order;
         this.statusCode = statusCode;
     }
 
@@ -38,10 +38,10 @@ public class OrdersParameterizedTest {
         };
     }
 
-    @DisplayName("Parameterized test to create new orders")
+    @DisplayName("Parameterized test to create new order")
     @Test
     public void ordersCanBeCreated() {
-        ValidatableResponse responseCreate =ordersClient.createOrders(orders);
+        ValidatableResponse responseCreate =ordersClient.createOrders(order);
         int actualTrack = responseCreate.extract().path("track");
         int actualStatusCode = responseCreate.extract().statusCode();
 

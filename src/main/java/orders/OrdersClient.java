@@ -1,5 +1,6 @@
-package Orders;
+package orders;
 
+import courier.Client;
 import io.qameta.allure.Step;
 import io.restassured.filter.Filter;
 import io.restassured.filter.log.RequestLoggingFilter;
@@ -16,13 +17,13 @@ public class OrdersClient extends Client {
     private final Filter requestFilter = new RequestLoggingFilter();
     private final Filter responseFiler = new ResponseLoggingFilter();
 
-    @Step("Create new orders")
-    public ValidatableResponse createOrders(Orders orders) {
+    @Step("Create new order")
+    public ValidatableResponse createOrders(Order order) {
         return given()
                 .with()
                 .filters(requestFilter, responseFiler)
-                .spec(getSpecOrder())
-                .body(orders)
+                .spec(getSpec())
+                .body(order)
                 .when()
                 .post(PATH_CREATE_ORDERS)
                 .then();
@@ -33,7 +34,7 @@ public class OrdersClient extends Client {
         return given()
                 .with()
                 .filters(requestFilter, responseFiler)
-                .spec(getSpecOrder())
+                .spec(getSpec())
                 .when()
                 .get(PATH_LIST_ORDERS)
                 .then();
